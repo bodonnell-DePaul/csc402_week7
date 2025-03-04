@@ -2,6 +2,7 @@ package csc402.week7;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 class ProcessInfo implements Comparable<ProcessInfo> {
     long pid;
@@ -28,10 +29,15 @@ public class ProcessManager {
         PriorityQueue<ProcessInfo> processQueue = new PriorityQueue<>();
         Scanner scanner = new Scanner(System.in);
         // Get all processes and add them to the priority queue with custom priorities
-        ProcessHandle.allProcesses().forEach(ph -> {
+        // ProcessHandle.allProcesses().forEach(ph -> {
+        //     int priority = getPriority(ph); // Custom method to determine priority
+        //     processQueue.add(new ProcessInfo(ph.pid(), priority));
+        // });
+        Stream<ProcessHandle> allProcs = ProcessHandle.allProcesses();
+        for(ProcessHandle ph : allProcs.toList()) {
             int priority = getPriority(ph); // Custom method to determine priority
             processQueue.add(new ProcessInfo(ph.pid(), priority));
-        });
+        }
 
         // Display processes to the user
         System.out.println("Processes:");

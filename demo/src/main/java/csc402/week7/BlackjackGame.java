@@ -18,8 +18,9 @@ public class BlackjackGame {
     public void dealInitialHands() {
         deck.shuffle();
         playerHand.add(deck.dealCard());
-        playerHand.add(deck.dealCard());
         dealerHand.add(deck.dealCard());
+        playerHand.add(deck.dealCard());
+        
         dealerHand.add(deck.dealCard());
     }
 

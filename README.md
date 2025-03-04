@@ -127,7 +127,7 @@ public class HeapSort {
  - Job Scheduling in Print Queues: Print servers use priority queues to manage print jobs, ensuring that high-priority documents are printed first.
  - Real-Time Systems: In real-time systems, priority queues ensure that critical tasks are processed within their time constraints.
 4. Importance of Priority Queues
- - Efficiency: Priority queues provide efficient insertion and extraction of elements based on priority, with both operations typically having a time complexity of \(O(\log n)\).
+ - Efficiency: Priority queues provide efficient insertion and extraction of elements based on priority, with both operations typically having a time complexity of \(O(n log n)\).
  - Fairness: They ensure that high-priority tasks or elements are processed before lower-priority ones, which is crucial in many applications like task scheduling and network traffic management.
  - Versatility: Priority queues can be used in a variety of applications, from operating systems to network management and real-time systems.
 5. When to Use Priority Queues Over Other Data Structures

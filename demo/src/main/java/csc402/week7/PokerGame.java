@@ -45,6 +45,7 @@ public class PokerGame {
         System.out.println("\nPlayer's highest card: " + playerHighest);
         System.out.println("Computer's highest card: " + computerHighest);
 
+        
         int comparison = playerHighest.compareTo(computerHighest);
         if (comparison > 0) {
             return "Player wins!";
