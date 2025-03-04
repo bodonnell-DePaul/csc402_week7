@@ -10,8 +10,8 @@ enum Rank {
 }
 
 class Card implements Comparable<Card> {
-    private final Suit suit;
-    private final Rank rank;
+    private Suit suit;
+    private Rank rank;
     
 
     public Card(Suit suit, Rank rank) {
@@ -62,105 +62,139 @@ class Card implements Comparable<Card> {
         return rank + " of " + suit;
     }
 
-    // @Override
-    // public Card add(Card b) {
+    
+    public Card add(Card b) 
+    {
 
-    //     // card1 += card2
-    //     this.rank += b.getRank();
-    //     this.suit += b.getSuit();
-    //     if(this.rank > Rank.ACE){
-    //         this.rank = Rank.ACE;
-    //     }
-    //     if(this.suit > Suit.SPADES){
-    //         this.suit = Suit.SPADES;
-    //     }
+        // card1 += card2
+        int newRankOrdinal = this.rank.ordinal() + b.getRank().ordinal();
+        if(newRankOrdinal > Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() > Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = card1 + card2
-    //     //return new Card(this.rank+ b.getRank(), this.suit);
+        return this;
+        //Card c = card1 + card2
+        //return new Card(this.rank+ b.getRank(), this.suit);
         
-    // }
+    }
 
-    // @Override
-    // public Card subtract(Card b) {
-    //     // card1 -= card2
-    //     this.rank -= b.getRank();
-    //     this.suit -= b.getSuit();
-    //     if(this.rank < Rank.TWO){
-    //         this.rank = Rank.TWO;
-    //     }
-    //     if(this.suit < Suit.HEARTS){
-    //         this.suit = Suit.HEARTS;
-    //     }
+    public Card subtract(Card b) 
+    {
+        // card1 -= card2
+        int newRankOrdinal = this.rank.ordinal() - b.getRank().ordinal();
+        if(newRankOrdinal < Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() < Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = card1 - card2
-    //     //return new Card(this.rank- b.getRank(), this.suit);
-    // }
+        return this;
+    }
 
-    // @Override
-    // public Card multiply(Card b) {
-    //     // card1 *= card2
-    //     this.rank *= b.getRank();
-    //     this.suit *= b.getSuit();
-    //     if(this.rank > Rank.ACE){
-    //         this.rank = Rank.ACE;
-    //     }
-    //     if(this.suit > Suit.SPADES){
-    //         this.suit = Suit.SPADES;
-    //     }
+    public Card divide(Card b) 
+    {
+        // card1 /= card2
+        int newRankOrdinal = this.rank.ordinal() / b.getRank().ordinal();
+        if(newRankOrdinal < Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() < Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = card1 * card2
-    //     //return new Card(this.rank* b.getRank(), this.suit);
-    // }
+        return this;
+    }
 
-    // @Override
-    // public Card divide(Card b) {
-    //     // card1 /= card2
-    //     this.rank /= b.getRank();
-    //     this.suit /= b.getSuit();
-    //     if(this.rank < Rank.TWO){
-    //         this.rank = Rank.TWO;
-    //     }
-    //     if(this.suit < Suit.HEARTS){
-    //         this.suit = Suit.HEARTS;
-    //     }
+    public Card multiply(Card b) 
+    {
+        // card1 *= card2
+        int newRankOrdinal = this.rank.ordinal() * b.getRank().ordinal();
+        if(newRankOrdinal > Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() > Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = card1 / card2
-    //     //return new Card(this.rank/ b.getRank(), this.suit);
-    // }
+        return this;
+    }
 
-    // @Override
-    // public Card mod(Card b) {
-    //     // card1 %= card2
-    //     this.rank %= b.getRank();
-    //     this.suit %= b.getSuit();
-    //     if(this.rank < Rank.TWO){
-    //         this.rank = Rank.TWO;
-    //     }
-    //     if(this.suit < Suit.HEARTS){
-    //         this.suit = Suit.HEARTS;
-    //     }
+    // Implementing the other operators
+    public Card mod(Card b) 
+    {
+        // card1 %= card2
+        int newRankOrdinal = this.rank.ordinal() % b.getRank().ordinal();
+        if(newRankOrdinal < Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() < Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = card1 % card2
-    //     //return new Card(this.rank% b.getRank(), this.suit);
-    // }
+        return this;
+    }
 
-    // @Override
-    // public Card negate() {
-    //     // card1 = -card1
-    //     this.rank = -this.rank;
-    //     this.suit = -this.suit;
-    //     if(this.rank < Rank.TWO){
-    //         this.rank = Rank.TWO;
-    //     }
-    //     if(this.suit < Suit.HEARTS){
-    //         this.suit = Suit.HEARTS;
-    //     }
+    public Card and(Card b) 
+    {
+        // card1 &= card2
+        int newRankOrdinal = this.rank.ordinal() & b.getRank().ordinal();
+        if(newRankOrdinal < Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() < Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
-    //     //Card c = -card1
-    //     //return new Card(-this.rank, -this.suit);
-    // }
+        return this;
+    }
 
+    public Card or(Card b) 
+    {
+        // card1 |= card2
+        int newRankOrdinal = this.rank.ordinal() | b.getRank().ordinal();
+        if(newRankOrdinal > Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() > Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
 
+        return this;
+    }
+
+    public Card xor(Card b) 
+    {
+        // card1 ^= card2
+        int newRankOrdinal = this.rank.ordinal() ^ b.getRank().ordinal();
+        if(newRankOrdinal > Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() > Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
+
+        return this;
+    }
+
+    public Card not() 
+    {
+        // card1 = ~card1
+        int newRankOrdinal = ~this.rank.ordinal();
+        if(newRankOrdinal < Rank.ACE.ordinal()){
+            this.rank = Rank.ACE;
+        }
+        if(this.suit.ordinal() < Suit.SPADES.ordinal()){
+            this.suit = Suit.SPADES;
+        }
+
+        return this;
+    }
+
+    
     //other operators
     //>=, <=, >, <, !=
 
